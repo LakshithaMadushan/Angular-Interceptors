@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Interceptors';
+
+  constructor(private http: HttpClient) {
+    this.http.get('/assets/my.json').subscribe((res) => {
+      console.log(res);
+    }, (err) => {
+      console.log(err);
+    });
+  }
 }
